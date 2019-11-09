@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anan.rbac.dao.BaseMenuDao" >
+
+    <resultMap id="BaseResultMap" type="com.anan.rbac.model.BaseMenu" >
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="ID" property="id" jdbcType="VARCHAR" />
+        <result column="MENU_URL" property="menuUrl" jdbcType="VARCHAR" />
+        <result column="MENU_SEQ" property="menuSeq" jdbcType="VARCHAR" />
+        <result column="MENU_PARENT_ID" property="menuParentId" jdbcType="INTEGER" />
+        <result column="MENU_NAME" property="menuName" jdbcType="VARCHAR" />
+        <result column="MENU_ICON" property="menuIcon" jdbcType="VARCHAR" />
+        <result column="MENU_ORDER" property="menuOrder" jdbcType="VARCHAR" />
+        <result column="IS_LEAF" property="isLeaf" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--查询全部菜单信息-->
+    <select id="findAllMenus" resultMap="BaseResultMap">
+        select * from base_menu
+    </select>
+
+
+</mapper>

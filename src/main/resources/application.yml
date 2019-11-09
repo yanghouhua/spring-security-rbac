@@ -1,0 +1,41 @@
+server:
+  port: 8085
+  context-path: /rbac
+spring:
+  application:
+    name: security-rbac
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/base1?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: admin
+      driver-class-name: com.mysql.jdbc.Driver
+      max-active: 20
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      filters: stat, wall
+  freemarker:
+    request-context-attribute: request
+
+security:
+  ignoring: "/static/**/*, /druid/**/**, /login.ftl, /webjars/**/*, /images/**/*"
+  intercept: "/**/*.jsp, /**/*.html, /**/*.ftl"
+  successUrl: "/rbac/indexPage"
+  logoutSuccessUrl: "/login.ftl"
+
+mybatis:
+  type-aliases-package: com.anan.rbac.model
+  mapper-locations: classpath*:/mybatis/com/anan/rbac/dao/*.xml
+
+logging:
+  file: logs/spring-boot-security-rbac.log
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anan.rbac.dao.BaseUserDao" >
+
+    <resultMap id="BaseResultMap" type="com.anan.rbac.model.BaseUser" >
+
+        <id column="ID" property="id" jdbcType="VARCHAR" />
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+        <result column="USER_PASSWORD" property="userPassword" jdbcType="VARCHAR" />
+        <result column="NIKE_NAME" property="nikeName" jdbcType="VARCHAR" />
+        <result column="STATUS" property="status" jdbcType="INTEGER" />
+    </resultMap>
+
+    <!--查询全部用户列表数据-->
+    <select id="findAllUsers" resultMap="BaseResultMap">
+        select * from base_user
+    </select>
+
+    <!--根据用户名称查询用户-->
+    <select id="findUserByUserName" parameterType="string" resultMap="BaseResultMap">
+        select * from base_user where user_name=#{userName}
+    </select>
+
+
+</mapper>
